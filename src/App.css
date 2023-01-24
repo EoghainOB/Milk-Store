@@ -222,3 +222,27 @@ button {
   background: rgb(255, 255, 255);
   cursor: pointer;
 }
+
+.paging {
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+[role=navigation] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap:20px;
+  font-family: 'Bungee', cursive;
+  cursor: pointer;
+}
+
+.next,
+.previous,
+.selected {
+  color: rgb(255, 121, 143);
+}
+
+.selected {
+  text-decoration: underline;
+}
