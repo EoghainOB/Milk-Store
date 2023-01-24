@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { ProductContextType, productTypes } from '../types';
@@ -12,14 +12,18 @@ const Productlist = () => {
   const { products } = useContext(ProductContext) as ProductContextType
   const [ search, setSearch ] = useState<string>('')
   const [ filter, setFilter ] = useState<string>('all')
-  const [ filteredProducts, setFilteredProducts ] = useState<productTypes[]>([])
   
-  const [itemOffset, setItemOffset] = useState(0);
-  const [itemsPerPage] = useState(9);
+  const [itemOffset, setItemOffset] = useState<number>(0);
+  const [filteredAmount, setFilteredAmount] = useState<number>(products.length / 9);
+  const [itemsPerPage] = useState<number>(9);
 
+  const pageCount = filter === 'all' ? Math.ceil(products.length / itemsPerPage) : Math.ceil(filteredAmount / itemsPerPage)
   const endOffset = itemOffset + itemsPerPage;
-  const currentItems = products.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(products.length / itemsPerPage);
+
+  useEffect(() => {
+    const filteredProducts = products.filter(product => product.type === filter)
+    setFilteredAmount(filteredProducts.length)
+  },[filter])
 
   //@ts-ignore
   const handlePageClick = (event) => {
@@ -29,8 +33,9 @@ const Productlist = () => {
     
     return (
       <div className="milkContainer">
+        <>
       <Filter setFilter={setFilter} setSearch={setSearch}/>
-      {currentItems.filter((milk) => {
+      {products.filter((milk) => {
         if(filter === 'all') {
         return milk
       } else {
@@ -42,24 +47,25 @@ const Productlist = () => {
         if(item.name.toLowerCase().includes(search.toLowerCase())) {
         return item
         }
-      }).map((item) => (
+      }).slice(itemOffset, endOffset).map((item) => (
         <div className='milk'>
           <Link to={`/product/${item?.id}`}>
             <Product products={item}/> 
           </Link>
         </div>
       ))}
-        <div className='paging'>
+        {pageCount > 1 && <div className='paging'>
         <ReactPaginate
           breakLabel="..."
           nextLabel="Next >"
           onPageChange={handlePageClick}
           pageRangeDisplayed={2}
-          pageCount={pageCount}
+          pageCount={Math.ceil(pageCount)}
           previousLabel="< Previous"
           //@ts-ignore
           renderOnZeroPageCount={null}/>
-        </div>
+        </div>}
+      </>
       </div>
     )
 }
