@@ -22,14 +22,14 @@ a:hover {
   color: rgb(84, 84, 84);
 }
 
-h1 {
+h1,
+h4 {
   font-family: 'Bungee', cursive;
 }
 
 p,
 h2,
-h3,
-h4 {
+h3 {
   font-family: 'Maven Pro', sans-serif;
 }
 
@@ -45,8 +45,17 @@ header {
 
 header h1 {
   padding-top: 25px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
   font-size: 3em;
   color: pink;
+}
+
+header h4 {
+  padding-top: 0px;
+  margin-top: -10px;
+  font-size: 0.7em;
+  color: rgb(127, 127, 127);
 }
 
 p {
@@ -87,6 +96,7 @@ h4 {
 .milk {
   align-items: stretch;
   flex-grow: 1;
+  max-width: 380px;
   flex-basis: 350px;
   background: #fff;
   margin-bottom: 8px;

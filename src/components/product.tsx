@@ -9,10 +9,10 @@ const Product = ({products}: Props) => {
 
   return (
   <>
-    <ul key={products.id} className='milk'>
-      <li>
+    <ul className='milk'>
+      <li key={products.id}>
         <div className='milkImage'>
-        <img alt={products.name} src={require('./images/milk.png')}/>
+          <img alt={products.name} src={require('./images/milk.png')}/>
         </div>
         <div className='milkText'>
         <h3>{products.name}</h3>

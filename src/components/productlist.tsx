@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { ProductContextType, productTypes } from '../types';
+import { ProductContextType } from '../types';
 import { ProductContext } from './data'
 import Filter from './filter';
 import Product from './product';
@@ -23,51 +23,50 @@ const Productlist = () => {
   useEffect(() => {
     const filteredProducts = products.filter(product => product.type === filter)
     setFilteredAmount(filteredProducts.length)
-  },[filter])
+  },[products, filter])
 
-  //@ts-ignore
-  const handlePageClick = (event) => {
+  const handlePageClick = (event: any) => {
     const newOffset = (event.selected * itemsPerPage) % products.length;
     setItemOffset(newOffset);
   };
     
-    return (
-      <div className="milkContainer">
-        <>
-      <Filter setFilter={setFilter} setSearch={setSearch}/>
-      {products.filter((milk) => {
-        if(filter === 'all') {
+  return (
+    <div className="milkContainer">
+      <>
+    <Filter setFilter={setFilter} setSearch={setSearch}/>
+    {products.filter((milk) => {
+      if(filter === 'all') {
+      return milk
+    } else {
+      if(milk.type.includes(filter)) {
         return milk
-      } else {
-        if(milk.type.includes(filter)) {
-          return milk
-        }
+      }
+    } return false
+    }).filter(item => {
+      if(item.name.toLowerCase().includes(search.toLowerCase())) {
+      return item
       } return false
-      }).filter(item => {
-        if(item.name.toLowerCase().includes(search.toLowerCase())) {
-        return item
-        }
-      }).slice(itemOffset, endOffset).map((item) => (
-        <div className='milk'>
-          <Link to={`/product/${item?.id}`}>
-            <Product products={item}/> 
-          </Link>
-        </div>
-      ))}
-        {pageCount > 1 && <div className='paging'>
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel="Next >"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={2}
-          pageCount={Math.ceil(pageCount)}
-          previousLabel="< Previous"
-          //@ts-ignore
-          renderOnZeroPageCount={null}/>
-        </div>}
-      </>
+    }).slice(itemOffset, endOffset).map((item) => (
+      <div key={item.id} className='milk'>
+        <Link to={`/product/${item?.id}`}>
+          <Product products={item}/> 
+        </Link>
       </div>
-    )
+    ))}
+      {pageCount > 1 && <div className='paging'>
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel="Next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={2}
+        pageCount={Math.ceil(pageCount)}
+        previousLabel="< Previous"
+        //@ts-ignore
+        renderOnZeroPageCount={null}/>
+      </div>}
+    </>
+    </div> 
+  )
 }
 
 export default Productlist

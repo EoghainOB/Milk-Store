@@ -30,7 +30,7 @@ const Filter = (set: Props) => {
           <select onChange={handleChange}>
             <option value="all">All</option>
             {types.map(option => (
-              <option value={option}>
+              <option key={option} value={option}>
                 {option}
               </option>
             ))}

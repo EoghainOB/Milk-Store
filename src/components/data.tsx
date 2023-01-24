@@ -27,7 +27,7 @@ const Data = ({ children }: any) => {
         })
     }, [cart])
 
-    let types: string[] = [... new Set(products.map(product => product.type))];
+    let types: string[] = [...new Set(products.map(product => product.type))];
     
   return (
     <ProductContext.Provider value={{ products, cart, types }}>
