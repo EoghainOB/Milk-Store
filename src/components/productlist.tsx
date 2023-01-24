@@ -12,7 +12,6 @@ const Productlist = () => {
   const [ search, setSearch ] = useState<string>('')
   const [ filter, setFilter ] = useState<string>('all')
     
-  console.log(search)
     return (
     <>
     <div className="milkContainer">
@@ -25,6 +24,10 @@ const Productlist = () => {
         return milk
       }
     } return false
+    }).filter(item => {
+      if(item.name.toLowerCase().includes(search.toLowerCase())) {
+      return item
+      }
     }).map((item) => (
       <div className='milk'>
         <Link to={`/product/${item?.id}`}>

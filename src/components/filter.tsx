@@ -2,8 +2,6 @@ import React from 'react';
 import { useContext } from 'react'
 import { ProductContextType } from '../types';
 import { ProductContext } from './data'
-//@ts-ignore
-import background from "./images/milkdrip.gif";
 
 type Props = {
   setFilter: React.Dispatch<React.SetStateAction<string>>;
@@ -24,10 +22,11 @@ const Filter = (set: Props) => {
 
   return (
     <>
-    <div className='filter' style={{ backgroundImage: `url(${background})`}}>
+    <div className='filter'>
         <form className="form-filter">
+          <label>Search: </label>
           <input type="text" className='search-input' onChange={handleInput}/>
-          <label>Filter Tags: </label>
+          <label>Filter: </label>
           <select onChange={handleChange}>
             <option value="all">All</option>
             {types.map(option => (

@@ -10,10 +10,6 @@ app.use(express.json());
 
 app.use(cors());
 
-app.get('/', (_req: Request, res: Response) => {
-  res.send('Express + Hello Server');
-});
-
 app.get('/api/milk', (_req: Request, res: Response) => {
   res.send(milks);
 });
