@@ -1,38 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #fae4e2;
+}
+
 .App {
+  max-width: 1250px;
+  margin: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+a:link,
+a:visited,
+a:active {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(84, 84, 84);
+}
+
+h1 {
+  font-family: 'Bungee', cursive;
+}
+
+p,
+h2,
+h3,
+h4 {
+  font-family: 'Maven Pro', sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+header {
+  height: 80px;
+  background-color: rgb(255, 255, 255);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header h1 {
+  padding-top: 20px;
+  font-size: 3em;
+  color: pink;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+p {
+  font-weight: 400;
+  margin-bottom: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h1 {
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+h2 {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: medium;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: small;
+}
+
+.milkContainer { 
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  gap: 40px;
 }
 
-.App-link {
-  color: #61dafb;
+.milk {
+  align-items: stretch;
+  flex-grow: 1;
+  flex-basis: 350px;
+  background: #fff;
+  margin-bottom: 8px;
+  border-radius: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ppMilk {
+  flex-basis: 250px;
+  background: #fff;
+  margin-bottom: 8px;
+  border-radius: 15px;
+}
+
+.ppMilkImage,
+.milkImage {
+  text-align: center;
+  background-color: #f6f6f6;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+.milkImage img{
+  width: 70%;
+  padding: 30px;
+}
+
+.ppMilkImage img{
+  width: 30%;
+  padding: 30px;
+}
+
+.milkText {
+ padding: 10px;
+}
+
+.label {
+  width: 100%;
+}
+
+.filter {
+  width: 100%;
+  text-align: center;
+  height: 90px;
+  padding-top: 65px;
+  background-repeat: repeat-x;
+}
+
+.ppFilter {
+  width: 100%;
+  text-align: center;
+  height: 90px;
+  padding-top: 95px;
+  background-repeat: repeat-x;
+}
+
+footer {
+  padding: 15px;
+  text-align: center;
+}
+
+li img {
+  width: 100%;
+  max-width: 350px;
+}
+
+select,
+input {
+  background-color: pink;
+  height: 30px;
+  width: 15%;
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+}
+
+select,
+::placeholder {
+  font-size: medium;
+  font-weight: 400;
 }
