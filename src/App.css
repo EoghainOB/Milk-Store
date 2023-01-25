@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 * {
   box-sizing: border-box;
@@ -9,6 +10,12 @@
 
 body {
   background: #fae4e2;
+}
+
+.App {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 a:link,
@@ -23,14 +30,17 @@ a:hover {
 }
 
 h1,
-h4 {
+h2 {
   font-family: 'Bungee', cursive;
 }
 
 p,
-h2,
 h3 {
   font-family: 'Maven Pro', sans-serif;
+}
+
+h4 {
+  font-family: 'Pacifico', cursive;
 }
 
 li {
@@ -38,13 +48,14 @@ li {
 }
 
 header {
-  height: 110px;
+  height: 120px;
   background-color: rgb(255, 255, 255);
   text-align: center;
+  border-bottom: solid 3px black;
 }
 
 header h1 {
-  padding-top: 25px;
+  padding-top: 16px;
   padding-bottom: 0px;
   margin-bottom: 0px;
   font-size: 3em;
@@ -52,10 +63,11 @@ header h1 {
 }
 
 header h4 {
+  transform: rotate(-5grad);
   padding-top: 0px;
-  margin-top: -10px;
-  font-size: 0.7em;
-  color: rgb(127, 127, 127);
+  margin-top: -15px;
+  font-size: 1.6em;
+  color: #000000;
 }
 
 p {
@@ -106,9 +118,9 @@ h4 {
 .productPage {
   max-width: 700px;
   margin: auto;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 40px;
+  margin-top: 10px;
+  padding: 10px;
+  padding-bottom: 20px;
 }
 
 .ppMilk {
@@ -124,6 +136,7 @@ h4 {
   background-color: #f6f6f6;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
+  border-bottom: solid 3px black;
 }
 
 .ppMilkImage {
@@ -157,10 +170,42 @@ label {
 }
 
 .filter {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   width: 100%;
-  text-align: center;
+  align-items: center;
   height: 40px;
   padding-top: 20px;
+}
+
+.navForm {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.navSearchBar {
+  width: 50%;
+}
+
+.navSearchBar input {
+  width: 70%;
+}
+
+.navDropdown {
+  width: 50%;
+  text-align: right;
+}
+
+.navButtons {
+  text-align: right;
+}
+
+.navDropdown select {
+  width: 90px;
+  margin-right: 10px;
 }
 
 footer {
@@ -173,11 +218,30 @@ li img {
   max-width: 350px;
 }
 
-select,
 input {
   background-color: pink;
   height: 30px;
-  width: 15%;
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  padding-left: 10px;
+}
+
+input:focus { 
+  outline: solid 1px rgb(255, 147, 165); 
+}
+
+select:focus { 
+  outline: none; 
+}
+
+::placeholder {
+  color: black;
+}
+
+select {
+  background-color: #fae4e2;;
+  height: 30px;
   padding: 5px;
   border: none;
   border-radius: 4px;
@@ -200,6 +264,16 @@ button {
   font-weight: bold;
   border: none;
   padding: 10px;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: rgb(255, 241, 241);
+}
+
+button:active {
+  background-color: rgb(255, 101, 126);
+  color: rgb(255, 255, 255);
 }
 
 .sliderBox {
@@ -235,7 +309,7 @@ button {
 
 .paging {
   width: 100%;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 [role=navigation] {
@@ -255,4 +329,78 @@ button {
 
 .selected {
   text-decoration: underline;
+}
+
+.cart {
+  max-width: 900px;
+  background-color: rgb(254, 249, 249);
+  padding: 10px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-radius: 15px;
+}
+
+.navigate {
+  max-width: 900px;
+  padding: 10px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.cartEmpty {
+  padding: 50px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.cartName {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: rgb(255, 110, 135);
+}
+
+.cartData,
+.cartHeaders {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding: 10px;
+}
+
+.cartData {
+  margin-bottom: 10px;
+}
+
+.cartProduct {
+  width: 70%;
+}
+
+.cartQty {
+  width: 15%;
+}
+
+.cartRemove {
+  width: 15%;
+}
+
+.notify {
+  max-width: 1250px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: right;
+  margin: auto;
+  height: 0px;
+}
+
+.notify h3 {
+  margin-top: 10px;
+  margin-right: 30px;
+  padding: 10px;
+  background-color: pink;
 }

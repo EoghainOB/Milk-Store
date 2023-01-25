@@ -23,7 +23,7 @@ const Data = ({ children }: any) => {
         axios
         .get('http://localhost:8080/cart')
         .then((response) => {
-            setCart([...response.data])
+          setCart([...response.data])
         })
     }, [cart])
 

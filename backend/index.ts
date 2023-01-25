@@ -1,55 +1,69 @@
 import express from 'express';
-import { Request, Response, Application } from 'express';
-import { milks } from './db';
-import { milkTypes } from './types';
+import { Application } from 'express';
+import { Schema, model, connect } from 'mongoose';
+import { cartTypes, milkTypes } from './types';
 const cors = require('cors');
+require('dotenv').config();
 
 const app: Application = express();
-
 app.use(express.json());
-
 app.use(cors());
 
-app.get('/api/milk', (_req: Request, res: Response) => {
-  res.send(milks);
-});
+main().catch(err => console.log(err));
 
-app.get('/api/milk/:id', (req: Request<{id: string}>, res: Response<{}, {milk: milkTypes}>) => {
-  if (milks.some(index => index.id == req.params.id) === false) {
+async function main() {
+  
+  await connect (`mongodb+srv://Eoghain:${process.env.PASS}@cluster0.sdqzzhz.mongodb.net/portfolio?retryWrites=true&w=majority`);
+
+  const milkSchema = new Schema<milkTypes>({
+    id: String,
+    name: String,
+    type: String,
+    storage: Number,
+  });
+
+  const Milk = model("Milk", milkSchema);
+
+  app.get("/api/milk", async (_req, res) => {
+    try {
+    const allMilk = await Milk.find();
     res
-    .send({ message: 'Error - Invalid id' });
-    return;
-  }
-  try {
-  const milk = milks.find(index => index.id == req.params.id);
-  res
     .status(200)
-    .send(milk);
+    .json(allMilk);
   } catch (err) {
     res
     .status(400)
     .send({ message: err });
   }
-});
+  });
 
-app.post('/api/milk/', (req: Request, res: Response) : void => {
-  if (milks.some(index => index.id == req.body.id)) {
+  app.get("/api/milk/:id", async (req, res) => {
+    try {
+    const { id } = req.params;
+    const oneMilk = await Milk.findById(id);
     res
-    .send({ message: 'Error - Please enter unique id' });
-    return;
-  }
-  try {
-  const milk: milkTypes = req.body
-  milks.push(milk);
-  res
-    .status(201)
-    .json(milks);
-  }
-  catch (err) {
+    .status(200)
+    .json(oneMilk);
+  } catch (err) {
     res
     .status(400)
-  }
-});
+    .send({ message: err });
+    }
+  });
+
+  app.post("/api/milk", async (req, res) => {
+    try {
+    const newMilk = new Milk({ ...req.body });
+    await newMilk.save();
+    res
+    .status(200)
+    .json(newMilk);
+  } catch (err) {
+    res
+    .status(400)
+    .send({ message: err });
+    }
+  });
 
 // app.put('/api/milk/:id', (req: Request<{id: string}>, res: Response<{}, {updatedMilk: milkTypes}>) => {
 //   if (milks.some(index => index.id == req.params.id) === false) {
@@ -74,26 +88,40 @@ app.post('/api/milk/', (req: Request, res: Response) : void => {
 //   }
 // });
 
-app.delete('/api/milk/:id', (req: Request<{id: string}>, res: Response) => {
-  if (milks.some(index => index.id == req.params.id) === false) {
-    res
-    .send({ message: 'Error - Invalid id' });
-    return;
-  }
-  try {
-  const milkDel = milks.findIndex(({ id }) => id == req.params.id);
-    if (milkDel >= 0) {
-    milks.splice(milkDel, 1);
-    }
-  res
-    .sendStatus(200);
+  const cartSchema = new Schema<cartTypes>({
+    id: String,
+    name: String,
+    type: String,
+    qty: Number,
+  });
+
+  const Milkcarts = model("Milkcart", cartSchema);
+
+  app.get("/cart", async (_req, res) => {
+    try {
+    const allCarts = await Milkcarts.find();
+    res.json(allCarts);
   } catch (err) {
     res
     .status(400)
-    .send('Error - Invalid id');
+    .send({ message: err });
   }
-});
+  });
 
-app.use((_req, res) => res.status(404).send('404 Not Found'));
+  app.post("/cart", async (req, res) => {
+    try {
+    const newCart = new Milkcarts({ ...req.body });
+    await newCart.save();
+    res.json(newCart);
+  } catch (err) {
+    res
+    .status(400)
+    .send({ message: err });
+  }
+  });
+
+  app.use((_req, res) => res.status(404).send('404 Not Found'));
+
+}
 
 export default app;

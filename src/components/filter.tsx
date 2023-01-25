@@ -23,19 +23,21 @@ const Filter = (set: Props) => {
   return (
     <>
     <div className='filter'>
-        <form className="form-filter">
-          <label>Search: </label>
-          <input type="text" className='search-input' onChange={handleInput}/>
-          <label>Filter: </label>
-          <select onChange={handleChange}>
-            <option value="all">All</option>
-            {types.map(option => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </form>
+      <div className='navForm'>
+        <div className='navSearchBar'>
+        <input type="text" className='search-input' placeholder='Search' onChange={handleInput}/>
+        </div>
+        <div className='navDropdown'>
+        <select onChange={handleChange}>
+          <option value="all">Filter: All</option>
+          {types.map(option => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+          ))}
+        </select>
+        </div>
+      </div>
     </div>
     </>
   );

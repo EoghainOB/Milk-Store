@@ -1,15 +1,15 @@
 export interface productTypes {
-    id: string,
-    name: string,
-    type: string,
-    storage: number,
+    id: string
+    name: string
+    type: string
+    storage: number
 }
 
 export interface cartTypes {
-    name: string,
-    id: number,
-    price: number,
-    qty: number,
+    id: number
+    name: string
+    price: number
+    qty: number
 }
 
 export type ProductContextType = {

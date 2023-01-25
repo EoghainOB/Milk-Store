@@ -1,20 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { useParams } from 'react-router-dom';
 import { ProductContextType } from '../types';
 import { ProductContext } from './data';
+import Navigation from './navigation';
 
 const Productpage = () => {
 
-const { id } = useParams();
-const { products } = useContext(ProductContext) as ProductContextType
-const [amount, setAmount] = useState<number>(1);
+  const { id } = useParams();
+  const { products } = useContext(ProductContext) as ProductContextType
+  const [amount, setAmount] = useState<number>(1);
 
-const filtered = products.find(milk => milk.id === id)
+  const filtered = products.find(milk => milk.id === id)
 
-const handleAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
-  setAmount(parseInt(e.target.value));
-};
+  const handleAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAmount(parseInt(e.target.value));
+  };
 
   const addToCart = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,6 +35,8 @@ const handleAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
 
   return (
     <>
+    <div className='navigate'>
+    <Navigation />
     <div className='productPage'>
     <ul key={id} >
       <li className='ppMilk'>
@@ -57,6 +60,7 @@ const handleAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
         </div>
       </li>
     </ul>
+    </div>
     </div>
     </>
   )

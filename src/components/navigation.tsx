@@ -1,21 +1,16 @@
 import React from 'react'
-import { useContext } from 'react'
-import { ProductContextType } from '../types';
-import { ProductContext } from './data'
 import { Link } from 'react-router-dom'
 
 const Navigation = () => {
 
-  const { cart } = useContext(ProductContext) as ProductContextType
-
   return (
+    <div className='navigation'>
     <nav>
         <ul>
-            <Link to="/"><button>Home</button></Link>
-            <Link to="/cart"><button>Cart</button></Link>
-            <h3>{cart.length}</h3>
+            <Link to="/"><p>&lt; Return</p></Link>
         </ul>
     </nav>
+    </div>
   )
 }
 
