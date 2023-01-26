@@ -48,7 +48,7 @@ const Cart = () => {
         </div>
         ))}
         <hr/>
-        <div>
+        <div className='purchaseMilk'>
           <button type="button" onClick={purchaseMilk}>Complete Order</button>
         </div>
         </>}

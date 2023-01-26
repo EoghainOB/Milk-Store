@@ -26,7 +26,7 @@ a:active {
 }
 
 a:hover {
-  color: rgb(84, 84, 84);
+  color: rgb(255, 110, 135)
 }
 
 h1,
@@ -101,7 +101,7 @@ h4 {
   padding-right: 10px;
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 20px 40px;
 }
 
 .milk {
@@ -110,8 +110,10 @@ h4 {
   max-width: 380px;
   flex-basis: 350px;
   background: #fff;
+  margin-top: 10px;
   margin-bottom: 8px;
   border-radius: 15px;
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.094);
 }
 
 .productPage {
@@ -142,6 +144,7 @@ h4 {
   text-align: center;
   background-color: #f6f6f6;
   border-radius: 15px;
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.094);
 }
 
 .milkImage img{
@@ -174,7 +177,7 @@ label {
   flex-wrap: wrap;
   width: 100%;
   align-items: center;
-  height: 40px;
+  height: 20px;
   padding-top: 20px;
 }
 
@@ -297,6 +300,10 @@ button:active {
   opacity: 1;
 }
 
+.slider:focus { 
+  outline: none;
+}
+
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -306,28 +313,35 @@ button:active {
   cursor: pointer;
 }
 
-.paging {
-  width: 100%;
-  margin-bottom: 40px;
-}
-
 [role=navigation] {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap:20px;
+  align-items: center;
+  gap: 20px;
   font-family: 'Bungee', cursive;
   cursor: pointer;
 }
 
-.next,
-.previous,
-.selected {
-  color: rgb(255, 121, 143);
+.paging {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
-.selected {
-  text-decoration: underline;
+.paging a {
+  color: rgb(0, 0, 0);
+}
+
+.next a,
+.previous a {
+  color: rgb(0, 0, 0);
+}
+
+.selected a {
+  color: rgb(255, 110, 135);
+  font-size: x-large;
+
 }
 
 .cart {
@@ -402,4 +416,19 @@ button:active {
   margin-right: 30px;
   padding: 10px;
   background-color: pink;
+}
+
+.purchaseMilk {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.productCounters {
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.productCounters p {
+  margin: 0px;
 }

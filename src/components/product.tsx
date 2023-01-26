@@ -9,8 +9,8 @@ const Product = ({products}: Props) => {
 
   return (
   <>
-    <ul className='milk'>
-      <li key={products.id}>
+    <ul>
+      <li>
         <div className='milkImage'>
           <img alt={products.name} src={require('./images/milk.png')}/>
         </div>

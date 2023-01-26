@@ -14,7 +14,7 @@ const Productlist = () => {
   const [ filter, setFilter ] = useState<string>('all')
   
   const [itemOffset, setItemOffset] = useState<number>(0);
-  const [filteredAmount, setFilteredAmount] = useState<number>(0);
+  const [filteredAmount, setFilteredAmount] = useState<number>(99);
   const [itemsPerPage] = useState<number>(9);
 
   const pageCount = filteredAmount === 0 ? products.length / itemsPerPage : Math.ceil(filteredAmount / itemsPerPage)
@@ -35,6 +35,9 @@ const Productlist = () => {
     <div className="milkContainer">
       <>
     <Filter setFilter={setFilter} setSearch={setSearch}/>
+    <div className='productCounters'>
+    <p><b>{filteredAmount === 0 ? 99 : filteredAmount}</b> Milk E-Products</p>
+    </div>
     {products.filter((milk) => {
       if(filter === 'all') {
       return milk
