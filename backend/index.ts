@@ -65,29 +65,6 @@ async function main() {
     }
   });
 
-// app.put('/api/milk/:id', (req: Request<{id: string}>, res: Response<{}, {updatedMilk: milkTypes}>) => {
-//   if (milks.some(index => index.id == req.params.id) === false) {
-//     res
-//     .status(400)
-//     .send({ message: 'Error - Invalid id' });
-//     return;
-//   }
-//   try {
-//   const newData: milkTypes = req.body;
-//   const id = req.params.id;
-//   const findMilk = milks.find((index) => index.id == req.params.id);
-//   const updatedMilk = {...findMilk, ...newData};
-//   milks.splice(id, 1, updatedMilk);
-//   res
-//     .status(201)
-//     .json(updatedMilk);
-//   }
-//   catch (err) {
-//     res
-//     .status(400)
-//   }
-// });
-
   const cartSchema = new Schema<cartTypes>({
     _id: String,
     name: String,

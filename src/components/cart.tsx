@@ -44,7 +44,7 @@ const Cart = () => {
         <hr/>
         {cart.map((data, index) => (
         <div key={index}>
-          <Cartdetails cartitem={data} index={index}/>
+          <Cartdetails cartitem={data}/>
         </div>
         ))}
         <hr/>

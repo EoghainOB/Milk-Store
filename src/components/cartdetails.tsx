@@ -3,10 +3,9 @@ import { cartTypes } from '../types';
 
 export type Props = {
   cartitem: cartTypes;
-  index: number;
 }
 
-const Cartdetails = ({cartitem, index}: Props) => {
+const Cartdetails = ({cartitem}: Props) => {
   
   const deleteItem = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
