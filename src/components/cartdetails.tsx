@@ -10,13 +10,9 @@ const Cartdetails = ({cartitem}: Props) => {
   const deleteItem = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const { id } = e.target as HTMLButtonElement
-      await fetch(`http://localhost:8080/cart${id}`, {
-          method: 'DELETE'
-        })
-      //   .then(() => {
-      //     portfolio();
-      //   }
-      // )
+    await fetch(`http://localhost:8080/cart/${id}`, {
+        method: 'DELETE'
+      })
     }
   
   return (

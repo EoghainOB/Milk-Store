@@ -108,11 +108,37 @@ async function main() {
   }
   });
 
+  app.get("/cart/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const oneCartItem = await Milkcarts.findById(id);
+      res
+      .status(200)
+      .json(oneCartItem);
+  } catch (err) {
+    res
+    .status(400)
+    .send({ message: err });
+  }
+  });
+
   app.post("/cart", async (req, res) => {
     try {
     const newCart = new Milkcarts({ ...req.body });
     await newCart.save();
     res.json(newCart);
+  } catch (err) {
+    res
+    .status(400)
+    .send({ message: err });
+  }
+  });
+
+  app.delete("/cart/:id", async (req, res) => {
+    try {
+    const { id } = req.params;
+    const removeItem = await Milkcarts.findByIdAndDelete(id);
+    res.json(removeItem);
   } catch (err) {
     res
     .status(400)
