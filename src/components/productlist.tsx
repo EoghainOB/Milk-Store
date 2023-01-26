@@ -14,16 +14,18 @@ const Productlist = () => {
   const [ filter, setFilter ] = useState<string>('all')
   
   const [itemOffset, setItemOffset] = useState<number>(0);
-  const [filteredAmount, setFilteredAmount] = useState<number>(products.length / 9);
+  const [filteredAmount, setFilteredAmount] = useState<number>(products.length);
   const [itemsPerPage] = useState<number>(9);
 
-  const pageCount = filter === 'all' ? Math.ceil(products.length / itemsPerPage) : Math.ceil(filteredAmount / itemsPerPage)
+  const pageCount = Math.ceil(filteredAmount / itemsPerPage)
   const endOffset = itemOffset + itemsPerPage;
 
   useEffect(() => {
-    const filteredProducts = products.filter(product => product.type === filter)
-    setFilteredAmount(filteredProducts.length)
-  },[products, filter])
+    const filtered = search === '' ? products.length : products.filter(product => product.name.toLowerCase().includes(search.toLowerCase())).length
+    const filterfiltered = products.filter(product => product.type === filter).length
+    console.log(filtered - filterfiltered)
+    setFilteredAmount(filtered - filterfiltered)
+  }, [filter, search])
 
   const handlePageClick = (event: any) => {
     const newOffset = (event.selected * itemsPerPage) % products.length;
@@ -60,9 +62,7 @@ const Productlist = () => {
         onPageChange={handlePageClick}
         pageRangeDisplayed={2}
         pageCount={Math.ceil(pageCount)}
-        previousLabel="< Previous"
-        //@ts-ignore
-        renderOnZeroPageCount={null}/>
+        previousLabel="< Previous"/>
       </div>}
     </>
     </div> 

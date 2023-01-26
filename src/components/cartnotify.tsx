@@ -12,7 +12,7 @@ const Cartnotify = () => {
     <div className='navigation'>
     <nav>
       <ul>
-        {cart.length > 0 && <h3><Link to="/cart">{cart.length} item</Link></h3>}
+        {cart.length > 0 && <h3><Link to="/cart">🛒 {cart.length} item</Link></h3>}
       </ul>
     </nav>
     </div>

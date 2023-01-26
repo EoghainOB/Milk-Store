@@ -1,47 +1,38 @@
+import React from 'react'
 import { cartTypes } from '../types';
 
 export type Props = {
-  cart: cartTypes[];
+  cartitem: cartTypes;
 }
 
-const Cartdetails = (cart: Props) => {
-
+const Cartdetails = ({cartitem}: Props) => {
+  
   const deleteItem = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-  }
-
-  const purchaseMilk = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const data = cart
-    await fetch('http://localhost:8080/cart', {
-      method: 'POST',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    localStorage.setItem('MilkCart', JSON.stringify(''));
-  };
+    const { id } = e.target as HTMLButtonElement
+      await fetch(`http://localhost:8080/cart${id}`, {
+          method: 'DELETE'
+        })
+      //   .then(() => {
+      //     portfolio();
+      //   }
+      // )
+    }
   
   return (
     <>
-    <div key={Math.random()} className='cartContents'>
-        {cart.cart.map(data => (
-        <div key={Math.random()} className='cartData'>
-            <div className='cartProduct'>
-              <p>{data.name}</p>
-            </div>
-            <div className='cartQty'>
-              <p>{data.qty} liters</p>
-            </div>
-            <div className='cartRemove'>
-              <button onClick={deleteItem}>Remove</button>
-              </div>
+    <div className='cartContents'>
+      <div className='cartData'>
+        <div className='cartProduct'>
+          <p>{cartitem.name}</p>
         </div>
-        ))}
-        <hr/>
-    </div>
-    <div>
-    <button onClick={purchaseMilk}>Complete Order</button>
+        <div className='cartQty'>
+          <p>{cartitem.qty} liters</p>
+        </div>
+        <div className='cartRemove'>
+          <button id={cartitem.id} type="button" onClick={deleteItem}>Remove</button>
+        </div>
+      </div>
     </div>
     </>
   )
