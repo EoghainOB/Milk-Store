@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useContext } from 'react'
 import { useParams } from 'react-router-dom';
 import { ProductContextType } from '../types';
@@ -21,7 +21,7 @@ const Productpage = () => {
     e.preventDefault();
     const data = {
       name: filtered?.name,
-      id: id,
+      _id: filtered?.id,
       type: filtered?.type,
       qty: amount
     };

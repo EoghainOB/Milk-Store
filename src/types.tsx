@@ -6,8 +6,9 @@ export interface productTypes {
 }
 
 export interface cartTypes {
-    id: string
+    _id: string
     name: string
+    type: string
     qty: number
 }
 

@@ -42,8 +42,10 @@ const Cart = () => {
         </div>
       </div>
         <hr/>
-        {cart.map((data) => (
-        <Cartdetails cartitem={data}/>
+        {cart.map((data, index) => (
+        <div key={index}>
+          <Cartdetails cartitem={data} index={index}/>
+        </div>
         ))}
         <hr/>
         <div>

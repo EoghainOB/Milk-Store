@@ -89,7 +89,7 @@ async function main() {
 // });
 
   const cartSchema = new Schema<cartTypes>({
-    id: String,
+    _id: String,
     name: String,
     type: String,
     qty: Number,
