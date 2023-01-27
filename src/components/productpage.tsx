@@ -8,7 +8,7 @@ import Navigation from './navigation';
 const Productpage = () => {
 
   const { id } = useParams();
-  const { products } = useContext(ProductContext) as ProductContextType
+  const { products, cart } = useContext(ProductContext) as ProductContextType
   const [amount, setAmount] = useState<number>(1);
 
   const filtered = products.find(milk => milk.id === id)

@@ -14,7 +14,7 @@ const Productlist = () => {
   const [ filter, setFilter ] = useState<string>('all')
   
   const [itemOffset, setItemOffset] = useState<number>(0);
-  const [filteredAmount, setFilteredAmount] = useState<number>(99);
+  const [filteredAmount, setFilteredAmount] = useState<number>(products.length);
   const [itemsPerPage] = useState<number>(9);
 
   const pageCount = filteredAmount === 0 ? products.length / itemsPerPage : Math.ceil(filteredAmount / itemsPerPage)
