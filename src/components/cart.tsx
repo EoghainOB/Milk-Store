@@ -1,24 +1,16 @@
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import { ProductContextType } from '../types';
 import Cartdetails from './cartdetails';
 import { ProductContext } from './data';
 import Navigation from './navigation';
 
 const Cart = () => {
-    
+   
   const { cart } = useContext(ProductContext) as ProductContextType
 
   const purchaseMilk = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(e.target)
-    // e.preventDefault();
-    // const data = milkCart
-    // await fetch('http://localhost:8080/cart', {
-    //   method: 'POST',
-    //   mode: 'cors',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(data)
-    // });
-    // localStorage.setItem('MilkCart', JSON.stringify(''));
+    e.preventDefault();
+    console.log("Will implement this later")
   };
 
   return (
@@ -58,4 +50,4 @@ const Cart = () => {
   )
 }
 
-export default Cart
+export default Cart;

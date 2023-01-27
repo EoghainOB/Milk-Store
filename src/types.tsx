@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react"
+
 export interface productTypes {
     id: string
     name: string
@@ -16,4 +18,5 @@ export type ProductContextType = {
     products: productTypes[]
     cart: cartTypes[]
     types: string[]
+    setCart: Dispatch<SetStateAction<cartTypes[]>>
 }

@@ -65,12 +65,12 @@ async function main() {
     }
   });
 
-  const cartSchema = new Schema<cartTypes>({
-    _id: String,
+  const cartSchema = new Schema<cartTypes[]>([{
     name: String,
-    type: String,
     qty: Number,
-  });
+    type: String,
+    _id: String,
+  }]);
 
   const Milkcarts = model("Milkcart", cartSchema);
 

@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import { useParams } from 'react-router-dom';
-import { ProductContextType } from '../types';
+import { cartTypes, ProductContextType } from '../types';
 import { ProductContext } from './data';
 import Navigation from './navigation';
 
 const Productpage = () => {
 
   const { id } = useParams();
-  const { products, cart } = useContext(ProductContext) as ProductContextType
+  const { products, setCart } = useContext(ProductContext) as ProductContextType
   const [amount, setAmount] = useState<number>(1);
 
   const filtered = products.find(milk => milk.id === id)
@@ -19,18 +19,22 @@ const Productpage = () => {
 
   const addToCart = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = {
+    const data: any = {
       name: filtered?.name,
-      _id: filtered?.id,
+      qty: amount,
       type: filtered?.type,
-      qty: amount
+      _id: filtered?.id,
     };
-    await fetch('http://localhost:8080/cart', {
-      method: 'POST',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
+    const cart = localStorage.getItem('cart');
+    if(cart === null) {
+      localStorage.setItem('cart', JSON.stringify([data]));
+      } else {
+      const getCart: any = localStorage.getItem('cart');
+      let currentCart: cartTypes[] = JSON.parse(getCart);
+      currentCart.push(data);
+      localStorage.setItem('cart', JSON.stringify(currentCart));
+      setCart(currentCart)
+      }
   };
 
   return (

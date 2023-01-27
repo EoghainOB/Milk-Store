@@ -24,7 +24,7 @@ const Productlist = () => {
     const filteredMilk = search === '' ? products : products.filter(product => product.name.toLowerCase().includes(search.toLowerCase()))
     const filtered = filter === 'all' ? filteredMilk.length : filteredMilk.filter(product => product.type === filter).length
     setFilteredAmount(filtered)
-  }, [filter, search])
+  }, [filter, search, products])
 
   const handlePageClick = (event: any) => {
     const newOffset = (event.selected * itemsPerPage) % products.length;
@@ -36,7 +36,7 @@ const Productlist = () => {
       <>
     <Filter setFilter={setFilter} setSearch={setSearch}/>
     <div className='productCounters'>
-    <p><b>{filteredAmount === 0 ? 99 : filteredAmount}</b> Milk E-Products</p>
+    <p><b>{filteredAmount === 0 ? 99 : filteredAmount}</b> {filter === 'all' ? '' : filter} Products</p>
     </div>
     {products.filter((milk) => {
       if(filter === 'all') {
