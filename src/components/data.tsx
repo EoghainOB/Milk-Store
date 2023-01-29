@@ -11,7 +11,7 @@ const Data = ({ children }: any) => {
 
     useEffect(() => {
       axios
-      .get('/api/milk')
+      .get('http://localhost:8080/api/milk')
       .then((response) => {
       setProducts([...response.data])
       })
@@ -20,9 +20,7 @@ const Data = ({ children }: any) => {
     const [cart, setCart] = useState<cartTypes[]>([])
 
     useEffect(() => {
-      if (localStorage.getItem('cart') !== null) {
       setCart(JSON.parse(localStorage.getItem('cart') || ''));
-      }
     }, [])
 
     let types: string[] = [...new Set(products.map(product => product.type))];
