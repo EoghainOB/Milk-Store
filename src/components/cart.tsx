@@ -11,6 +11,13 @@ const Cart = () => {
   const purchaseMilk = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log("Will implement this later")
+    const data = cart
+    await fetch('http://localhost:8080/cart', {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
   };
 
   return (
