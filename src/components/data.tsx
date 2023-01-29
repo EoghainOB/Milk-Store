@@ -20,7 +20,9 @@ const Data = ({ children }: any) => {
     const [cart, setCart] = useState<cartTypes[]>([])
 
     useEffect(() => {
+      if (localStorage.getItem('cart') !== null) {
       setCart(JSON.parse(localStorage.getItem('cart') || ''));
+      }
     }, [])
 
     let types: string[] = [...new Set(products.map(product => product.type))];
