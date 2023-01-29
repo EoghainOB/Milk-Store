@@ -11,7 +11,7 @@ const Data = ({ children }: any) => {
 
     useEffect(() => {
       axios
-      .get('/api/milk')
+      .get('http://localhost:8080/api/milk')
       .then((response) => {
       setProducts([...response.data])
       })
