@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
 * {
   box-sizing: border-box;
@@ -26,21 +26,21 @@ a:active {
 }
 
 a:hover {
-  color: rgb(255, 110, 135)
+  color: rgb(255, 110, 135);
 }
 
 h1,
 h2 {
-  font-family: 'Bungee', cursive;
+  font-family: "Bungee", cursive;
 }
 
 p,
 h3 {
-  font-family: 'Maven Pro', sans-serif;
+  font-family: "Maven Pro", sans-serif;
 }
 
 h4 {
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
 }
 
 li {
@@ -94,7 +94,7 @@ h4 {
   font-size: small;
 }
 
-.milkContainer { 
+.milkContainer {
   max-width: 1250px;
   margin: auto;
   padding-left: 10px;
@@ -147,18 +147,18 @@ h4 {
   box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.094);
 }
 
-.milkImage img{
+.milkImage img {
   width: 50%;
   padding: 30px;
 }
 
-.ppMilkImage img{
+.ppMilkImage img {
   width: 100%;
   padding: 50px;
 }
 
 .milkText {
- padding: 10px;
+  padding: 10px;
 }
 
 .ppMilkText {
@@ -229,12 +229,12 @@ input {
   padding-left: 10px;
 }
 
-input:focus { 
-  outline: solid 1px rgb(255, 147, 165); 
+input:focus {
+  outline: solid 1px rgb(255, 147, 165);
 }
 
-select:focus { 
-  outline: none; 
+select:focus {
+  outline: none;
 }
 
 ::placeholder {
@@ -242,7 +242,7 @@ select:focus {
 }
 
 select {
-  background-color: #fae4e2;;
+  background-color: #fae4e2;
   height: 30px;
   padding: 5px;
   border: none;
@@ -256,7 +256,7 @@ select,
 }
 
 hr {
-  border-top: 1px solid pink
+  border-top: 1px solid pink;
 }
 
 button {
@@ -292,15 +292,15 @@ button:active {
   background: pink;
   outline: none;
   opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 }
 
 .slider:hover {
   opacity: 1;
 }
 
-.slider:focus { 
+.slider:focus {
   outline: none;
 }
 
@@ -313,13 +313,13 @@ button:active {
   cursor: pointer;
 }
 
-[role=navigation] {
+[role="navigation"] {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  font-family: 'Bungee', cursive;
+  font-family: "Bungee", cursive;
   cursor: pointer;
 }
 
@@ -341,7 +341,6 @@ button:active {
 .selected a {
   color: rgb(255, 110, 135);
   font-size: x-large;
-
 }
 
 .cart {

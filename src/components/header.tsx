@@ -2,7 +2,8 @@ import React from 'react'
 import Cartnotify from './cartnotify'
 
 const Header = () => {
-  return (
+
+return (
     <>
       <div className='notify'>
         <Cartnotify />
