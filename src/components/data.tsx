@@ -9,7 +9,7 @@ const Data = ({ children }: any) => {
   const [products, setProducts] = useState<productTypes[]>([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/milk").then((response) => {
+    axios.get("https://milk-store.vercel.app/api/milk").then((response) => {
       setProducts([...response.data]);
     });
   }, []);
