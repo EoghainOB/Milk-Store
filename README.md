@@ -7,8 +7,6 @@ This was a fun project to work on. I created a 'Milk Store', which contains 99 d
 ## Instructions
 If you wish to try this on your own computer, simply clone this repository to your own machine. You will need to then run NPM install from the route directory. Once installed you should run 'npm start' in your terminal from both the root folder, for the front end, and again in the /backend/ folder for the backend.
 
-<i>*I have included the .e n v file for MongoDB, which is know is not good practice but it is needed to access the product data</i>
-
 <i>This project is made using: </i>
 
 <div>
