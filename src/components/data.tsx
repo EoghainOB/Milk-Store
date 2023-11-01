@@ -1,7 +1,8 @@
 import React, { useEffect, useState, createContext } from "react";
 import { cartTypes, ProductContextType, productTypes } from "../types";
-import axios from "axios";
+// import axios from "axios";
 import App from "../App";
+import storeData from "../dataStore/store.json";
 
 export const ProductContext = createContext<ProductContextType | null>(null);
 
@@ -9,10 +10,14 @@ const Data = ({ children }: any) => {
   const [products, setProducts] = useState<productTypes[]>([]);
 
   useEffect(() => {
-    axios.get("https://milk-store.vercel.app/api/milk").then((response) => {
-      setProducts([...response.data]);
-    });
+    setProducts([...storeData]);
   }, []);
+
+  // useEffect(() => {
+  //   axios.get("http://localhost:8080/api/milk").then((response) => {
+  //     setProducts([...response.data]);
+  //   });
+  // }, []);
 
   const [cart, setCart] = useState<cartTypes[]>([]);
 
