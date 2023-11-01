@@ -439,6 +439,10 @@ button:active {
   gap: 2em;
 }
 
+#xText {
+  display: none;
+}
+
 @media only screen and (max-width: 640px) {
   header {
     height: 150px;
@@ -461,5 +465,24 @@ button:active {
     margin-left: 0px;
     margin-top: 20px;
     padding: 10px;
+  }
+  .cartProduct {
+    width: 77%;
+  }
+  .cartQty {
+    width: 15%;
+  }
+
+  .cartRemove {
+    width: 8%;
+  }
+  .removeHeader {
+    display: none;
+  }
+  #xText {
+    display: block;
+  }
+  #removeText {
+    display: none;
   }
 }
