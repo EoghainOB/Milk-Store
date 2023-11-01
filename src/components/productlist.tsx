@@ -81,12 +81,12 @@ const Productlist = () => {
         {pageCount > 1 && (
           <div className="paging">
             <ReactPaginate
-              breakLabel="..."
-              nextLabel="Next >"
+              breakLabel=".."
+              nextLabel=">"
               onPageChange={handlePageClick}
               pageRangeDisplayed={2}
               pageCount={Math.ceil(pageCount)}
-              previousLabel="< Previous"
+              previousLabel="<"
             />
           </div>
         )}
