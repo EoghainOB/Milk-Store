@@ -51,31 +51,33 @@ const Productlist = () => {
             {filter === "all" ? "" : filter} Products
           </p>
         </div>
-        {products
-          .filter((milk) => {
-            if (filter === "all") {
-              return milk;
-            } else {
-              if (milk.type.includes(filter)) {
+        <div className="milkBody">
+          {products
+            .filter((milk) => {
+              if (filter === "all") {
                 return milk;
+              } else {
+                if (milk.type.includes(filter)) {
+                  return milk;
+                }
               }
-            }
-            return false;
-          })
-          .filter((item) => {
-            if (item.name.toLowerCase().includes(search.toLowerCase())) {
-              return item;
-            }
-            return false;
-          })
-          .slice(itemOffset, endOffset)
-          .map((item) => (
-            <div key={item.id} className="milk">
-              <Link to={`/product/${item?.id}`}>
-                <Product products={item} />
-              </Link>
-            </div>
-          ))}
+              return false;
+            })
+            .filter((item) => {
+              if (item.name.toLowerCase().includes(search.toLowerCase())) {
+                return item;
+              }
+              return false;
+            })
+            .slice(itemOffset, endOffset)
+            .map((item) => (
+              <div key={item.id} className="milk">
+                <Link to={`/product/${item?.id}`}>
+                  <Product products={item} />
+                </Link>
+              </div>
+            ))}
+        </div>
         {pageCount > 1 && (
           <div className="paging">
             <ReactPaginate

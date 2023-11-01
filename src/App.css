@@ -20,7 +20,8 @@ body {
 
 a:link,
 a:visited,
-a:active {
+a:active,
+select {
   color: rgb(0, 0, 0);
   text-decoration: none;
 }
@@ -95,29 +96,23 @@ h4 {
 }
 
 .milkContainer {
-  max-width: 1250px;
+  max-width: 1200px;
   margin: auto;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px 40px;
 }
 
 .milk {
-  align-items: stretch;
   flex-grow: 1;
-  max-width: 380px;
-  flex-basis: 350px;
   background: #fff;
-  margin-top: 10px;
-  margin-bottom: 8px;
   border-radius: 15px;
   box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.094);
 }
 
 .productPage {
-  max-width: 700px;
   margin: auto;
   margin-top: 10px;
   padding: 10px;
@@ -141,6 +136,7 @@ h4 {
 }
 
 .ppMilkImage {
+  width: 45%;
   text-align: center;
   background-color: #f6f6f6;
   border-radius: 15px;
@@ -162,7 +158,7 @@ h4 {
 }
 
 .ppMilkText {
-  width: 40%;
+  width: 50%;
   margin-left: 30px;
   padding: 10px;
 }
@@ -344,7 +340,7 @@ button:active {
 }
 
 .cart {
-  max-width: 900px;
+  max-width: 1200px;
   background-color: rgb(254, 249, 249);
   padding: 10px;
   margin: auto;
@@ -354,7 +350,7 @@ button:active {
 }
 
 .navigate {
-  max-width: 900px;
+  max-width: 1200px;
   padding: 10px;
   margin: auto;
   margin-top: 10px;
@@ -402,7 +398,7 @@ button:active {
 }
 
 .notify {
-  max-width: 1250px;
+  max-width: 1150px;
   display: flex;
   flex-wrap: wrap;
   justify-content: right;
@@ -430,4 +426,28 @@ button:active {
 
 .productCounters p {
   margin: 0px;
+}
+
+.milkBody {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+@media only screen and (max-width: 640px) {
+  .ppMilkImage {
+    width: 100%;
+  }
+
+  .milkText {
+    padding: 10px;
+  }
+
+  .ppMilkText {
+    width: 100%;
+    margin-left: 0px;
+    margin-top: 20px;
+    padding: 10px;
+  }
 }
